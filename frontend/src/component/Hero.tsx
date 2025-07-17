@@ -27,35 +27,12 @@ const Hero: React.FC = () => {
 //  const { isConnected } = useAccount(); // ✅ Correct hook to check wallet connection
  // const [amount, setAmount] = useState(1);
   const { open } = useAppKit();
-  const { isConnected, address } = useAccount();
-  const { writeContract, isPending } = useWriteContract();
-  const [amount, setAmount] = useState(1);
+  const { isConnected } = useAccount();
+  const { writeContract } = useWriteContract();
+  //const [amount] = useState(1);
 
 
   const CONTRACT_ADDRESS = "0x7F4Aa130C98B083e4aD0aD94D6b85CCB6e87179D";
-
- const handleMint = async () => {
-    if (!isConnected) {
-      await open();
-      return;
-    }
-
-    try {
-      await writeContract({
-        address: CONTRACT_ADDRESS,
-        abi,
-        functionName: "mint",         // your contract's mint function
-        args: [BigInt(amount)],
-        value: parseEther((0.01 * amount).toString()),  // adjust based on your contract
-      });
-
-      alert("Minting transaction sent!");
-    } catch (err) {
-      console.error("Minting failed:", err);
-      alert("Minting failed");
-    }
-  };
-
 
 
   const [formData, setFormData] = useState<FormData>({
