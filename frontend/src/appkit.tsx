@@ -18,13 +18,17 @@ const metadata = {
   icons: ['https://avatars.githubusercontent.com/u/179229932']
 }
 
-const networks = [mainnet, arbitrum]
+// ✅ Ensure `networks` is a non-empty tuple (typed correctly)
+const networks = [mainnet, arbitrum] as [typeof mainnet, typeof arbitrum]
+
+// 3. Initialize WagmiAdapter
 const wagmiAdapter = new WagmiAdapter({
   networks,
   projectId,
   ssr: true
 })
 
+// 4. Initialize AppKit
 createAppKit({
   adapters: [wagmiAdapter],
   networks,
@@ -35,10 +39,13 @@ createAppKit({
   }
 })
 
+// 5. Provider wrapper
 export function AppKitProvider({ children }: { children: React.ReactNode }) {
   return (
     <WagmiProvider config={wagmiAdapter.wagmiConfig}>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        {children}
+      </QueryClientProvider>
     </WagmiProvider>
   )
 }
