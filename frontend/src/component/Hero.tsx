@@ -101,7 +101,7 @@ const Hero: React.FC = () => {
   return (
     <div className="max-w-2xl mx-auto my-12 bg-white shadow-2xl rounded-2xl p-8 border border-gray-200">
       <h2 className="text-3xl font-bold text-center text-[#0C4E86] mb-6">
-        🎨 Mint Your NFT
+        🎨 Vandana erc721
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-6">
