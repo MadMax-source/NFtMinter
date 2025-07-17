@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+
+button[class*="reown"] {
+  background-color: #0C4E86 !important;
+  color: white !important;
+  border-radius: 9999px;
+}
